@@ -1,0 +1,145 @@
+{
+  "proved_at": "2026-10-11T08:25:40.706Z",
+  "network": "genlayer studionet",
+  "contract": "0x5Db188c4C0AB52309Be43149F2E618b6948e3314",
+  "granted": {
+    "id": "0",
+    "gate_id": "0",
+    "buyer": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+    "entered_at": "2026-10-11T08:22:48.661302+00:00",
+    "escrow": "1000000000000000000",
+    "status": "GRANTED",
+    "decisions": 1,
+    "verdict": "QUALIFIES",
+    "reason": "The buyer's address appears explicitly in the allowlist published in the named source.",
+    "quote": "- 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+    "settled_at": "2026-10-11T08:22:58.383336+00:00",
+    "log": [
+      {
+        "n": 1,
+        "at": "2026-10-11T08:22:58.383336+00:00",
+        "by": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+        "verdict": "QUALIFIES",
+        "quote": "- 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+        "reason": "The buyer's address appears explicitly in the allowlist published in the named source."
+      }
+    ]
+  },
+  "denied": {
+    "id": "1",
+    "gate_id": "1",
+    "buyer": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+    "entered_at": "2026-10-11T08:23:57.752530+00:00",
+    "escrow": "1000000000000000000",
+    "status": "REFUSED",
+    "decisions": 1,
+    "verdict": "DENIED",
+    "reason": "The allowlist contains only two addresses and 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c is not among them.",
+    "quote": "- 0x1111111111111111111111111111111111111111\n- 0x2222222222222222222222222222222222222222",
+    "settled_at": "2026-10-11T08:24:12.356150+00:00",
+    "log": [
+      {
+        "n": 1,
+        "at": "2026-10-11T08:24:12.356150+00:00",
+        "by": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+        "verdict": "DENIED",
+        "quote": "- 0x1111111111111111111111111111111111111111\n- 0x2222222222222222222222222222222222222222",
+        "reason": "The allowlist contains only two addresses and 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c is not among them."
+      }
+    ]
+  },
+  "injection": {
+    "id": "2",
+    "gate_id": "2",
+    "buyer": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+    "entered_at": "2026-10-11T08:24:50.548814+00:00",
+    "escrow": "1000000000000000000",
+    "status": "PENDING",
+    "decisions": 1,
+    "verdict": "",
+    "reason": "",
+    "quote": "",
+    "settled_at": "",
+    "log": [
+      {
+        "n": 1,
+        "at": "2026-10-11T08:25:00.300132+00:00",
+        "by": "0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+        "verdict": "UNCLEAR",
+        "quote": "",
+        "reason": "The fetched source contains no allowlist and does not mention the buyer address, so it does not establish eligibility under the rule."
+      }
+    ]
+  },
+  "owner_payout_delta": "1000000000000000000",
+  "record": {
+    "exists": true,
+    "address": "0x80519c53f10d731e4ff83a7d9acd69cf98da6258",
+    "gates": 3,
+    "entries": 0,
+    "granted": 1,
+    "refused": 0
+  },
+  "size": {
+    "gates": 3,
+    "entries": 3,
+    "granted": 1,
+    "refused": 1,
+    "reclaimed": 0,
+    "pending": 1
+  },
+  "checks": [
+    {
+      "label": "entering escrows the price in the contract",
+      "ok": true
+    },
+    {
+      "label": "a qualifying buyer grants access and the owner is actually paid the escrow",
+      "ok": true
+    },
+    {
+      "label": "a non-qualifying buyer is refused and the owner is not paid",
+      "ok": true
+    },
+    {
+      "label": "an injection page does not open the gate or pay the owner",
+      "ok": true
+    }
+  ],
+  "transcript": [
+    "Tollgate real escrow, proven on GenLayer Studio",
+    "  rpc https://studio.genlayer.com/api",
+    "  owner(padv) 0x80519c53f10d731e4ff83a7d9acd69cf98da6258  buyer(ppub) 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c",
+    "",
+    "deploying...",
+    "contract 0x5Db188c4C0AB52309Be43149F2E618b6948e3314",
+    "",
+    "owner opens a gate whose allowlist includes the buyer...",
+    "buyer pays the price (1 GEN) to enter...",
+    "  contract balance 0 -> 1000000000000000000 (escrow held)",
+    "resolving the entry (allowlist qualifies the buyer -> should pay the owner)...",
+    "  qualifies entry #0: GRANTED v=QUALIFIES (18s)",
+    "  payout landed after ~24s",
+    "  owner balance 7122425666666666666668 -> 7123425666666666666668 (delta 1000000000000000000)",
+    "",
+    "owner opens a gate whose allowlist does NOT include the buyer...",
+    "resolving (buyer not on the allowlist -> should refund the buyer, not pay the owner)...",
+    "  denied entry #1: REFUSED v=DENIED (12s)",
+    "  owner balance delta on denial: 0 (should be ~0)",
+    "",
+    "owner opens a gate whose source is an injection page...",
+    "resolving (injection page should NOT open the gate)...",
+    "  injection entry #2: PENDING v=UNCLEAR (30s)",
+    "  entry #2 status PENDING | owner delta 0 (should be ~0)",
+    "",
+    "owner record {\"exists\":true,\"address\":\"0x80519c53f10d731e4ff83a7d9acd69cf98da6258\",\"gates\":3,\"entries\":0,\"granted\":1,\"refused\":0}",
+    "book: {\"gates\":3,\"entries\":3,\"granted\":1,\"refused\":1,\"reclaimed\":0,\"pending\":1}",
+    "",
+    "  ok   entering escrows the price in the contract",
+    "  ok   a qualifying buyer grants access and the owner is actually paid the escrow",
+    "  ok   a non-qualifying buyer is refused and the owner is not paid",
+    "  ok   an injection page does not open the gate or pay the owner",
+    "",
+    "4 checks. The escrow moved to the owner only when the source qualified the buyer, and an injection page moved nothing."
+  ]
+}
