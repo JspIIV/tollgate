@@ -1,0 +1,9 @@
+{
+  "name": "tollgate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A GenLayer primitive: pay to pass a gate, and a round releases the payment only if a public source shows you qualify, else it refunds you.",
+  "scripts": { "deploy": "node scripts/deploy.mjs", "prove": "node scripts/prove-studio.mjs" },
+  "dependencies": { "ethers": "^6", "genlayer-js": "1.1.8" }
+}

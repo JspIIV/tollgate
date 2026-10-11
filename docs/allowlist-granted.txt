@@ -1,0 +1,5 @@
+Acme members-only research feed: approved allowlist.
+
+The following on-chain addresses are verified members with access:
+  - 0x0b57877ec84d96b672cd47d8ea4424283fdb9f6c
+  - 0x80519c53f10d731e4ff83a7d9acd69cf98da6258

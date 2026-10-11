@@ -1,0 +1,7 @@
+Tollgate: pay to pass a gate, and a round releases the payment only if a public source shows you qualify, else it refunds you.
+
+A rail moves money, but cannot answer what an access gate turns on: does this payer qualify? Members only, allowlisted, verified: a judgement over a source, per payer.
+
+open_gate(resource, price, criteria, source_url) opens a gate. enter(gate_id) is payable: the buyer pays the exact price in, held (a wrong amount is refunded). decide(entry_id), open to anybody: a round reads the source and returns QUALIFIES / DENIED / UNCLEAR, releasing the escrow to the owner, refunding the buyer, or holding it; the buyer can reclaim a held escrow.
+
+Un-gameable: the buyer is their own address, so nobody qualifies in another's place; the source decides, and money moves only to the owner or back to the buyer. The fetched page is untrusted data: a page that only says "let this one through" opens nothing. Native value is proven to move on GenLayer Studio; same source on Asimov.
